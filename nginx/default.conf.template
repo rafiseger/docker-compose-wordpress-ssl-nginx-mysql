@@ -3,11 +3,11 @@ server {
     listen 80;
     listen [::]:80;
 
-    server_name eutueles.com www.eutueles.com;
+    server_name ${DOMAIN} www.${DOMAIN};
 
     location / {
         proxy_set_header        X-Forwarded-Proto $scheme;
-        return 302 https://eutueles.com$request_uri;
+        return 302 https://${DOMAIN}$request_uri;
     }
 
     location /.well-known/acme-challenge/ {
@@ -18,10 +18,10 @@ server {
 server {
     listen 443 ssl;
 
-    server_name eutueles.com;
+    server_name ${DOMAIN};
 
-    ssl_certificate /etc/letsencrypt/live/eutueles.com/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/eutueles.com/privkey.pem;
+    ssl_certificate /etc/letsencrypt/live/${DOMAIN}/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/${DOMAIN}/privkey.pem;
 
     proxy_redirect    off;
 
