@@ -1,6 +1,8 @@
-#!/usr/bin/env sh
+#!/bin/bash
+export DOLLAR='$'
+export DOMAIN="$(grep DOMAIN .env | cut -d '=' -f2))"
 set -eu
 
-envsubst '${DOMAIN} ' < /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf
+envsubst < /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf
 
 exec "$@"

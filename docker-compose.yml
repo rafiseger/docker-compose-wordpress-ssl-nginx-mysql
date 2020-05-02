@@ -1,4 +1,4 @@
-version: "3"
+version: "3.5"
 
 services:
 
@@ -16,7 +16,7 @@ services:
     networks:
       flat-network:
         aliases :
-          - ${DOMAIN}
+          - $$DOMAIN
     container_name: nginx
     ports:
       - "80:80"
@@ -30,8 +30,9 @@ services:
     depends_on:
       - wp
       - certbot
+    env_file: .env
     environment:
-      - DOMAIN="${DOMAIN}"
+      - DOMAIN=$$DOMAIN
        
   wp:
     image: wordpress:latest
