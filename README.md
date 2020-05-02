@@ -9,6 +9,7 @@ Contains a local docker-compose
 The docker-compose should spin up a working wordpress site with SSL. more generic.
 
 ## Setup Overview
+- Create data directory ./mysql_database/mysql for data files
 - Assuming you have a domain name and server already setup. Edit and rename sample.env to .env and add your domain and credentials for wordpress and mysql
 - You can increase the upload max file size in wordpress media in /wordpress/wp-content/uploads/uploads.ini (edit before running the container)
 - Make ./init-letsencrypt.sh executable and then run it:
